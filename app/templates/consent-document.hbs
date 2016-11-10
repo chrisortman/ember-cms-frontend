@@ -1,9 +1,19 @@
 <div class="ui three column grid container">
 <div class="column">
   <h3>Section 1 of 6 - Overview <button>+ Add</button></h3>
-  {{#each model.sections as |section| }}
-    <p>{{section.title}}</p>
+
+  {{#ui-dropdown class="selection" selected="Overview" onChange=(action (mut section))}}
+<div class="default text">Section</div>
+<i class="dropdown icon"></i>
+<div class="menu">
+  {{#each model.sections as |section|}}
+    <div class="item" data-value="{{section.id}}">
+      {{section.title}}
+    </div>
   {{/each}}
+</div>
+{{/ui-dropdown}}
+
   <p>
     Section Title
     <input type="text" />
