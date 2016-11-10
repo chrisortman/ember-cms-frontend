@@ -1,4 +1,5 @@
-<div class="column1">
+<div class="ui three column grid container">
+<div class="column">
   <h3>Section 1 of 6 - Overview <button>+ Add</button></h3>
   <p>
     Section Title
@@ -22,15 +23,21 @@
     <textarea rows="20" cols="40"></textarea>
   </p>
 </div>
-<div class="column2">
-  <div style="border: 3px solid black; border-radius: 40px;width: 230px; height:405px">
+<div class="column">
+  <div class="ui centered grid" style="border: 3px solid black; border-radius: 40px;width: 230px; height:405px">
+    <h1>Overview</h1>
+    <h2>Overview of the study</h2>
+
+    <h3>Learn more about the study</h3>
+
+    <button>Get Started</button>
   </div>
 </div>
-<div class="column3">
-  <h5>Consent Document V3</h5>
-  <h6>Last Published 01/01/2016</h6>
+<div class="column">
+  <h5>Consent Document {{model.version}}</h5>
+  <h6>Last Published {{model.lastPublished}}</h6>
   <button>Save</button>
   <button>Publish</button>
 </div>
-
+</div>
 {{outlet}}
