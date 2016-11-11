@@ -1,56 +1,61 @@
 <div class="ui three column grid container">
-<div class="column">
-  <h3>Section 1 of 6 - Overview <button>+ Add</button></h3>
+  <div class="row">
 
-  {{#ui-dropdown class="selection" selected="Overview" onChange=(action (mut section))}}
-<div class="default text">Section</div>
-<i class="dropdown icon"></i>
-<div class="menu">
-  {{#each model.sections as |section|}}
-    <div class="item" data-value="{{section.id}}">
-      {{section.title}}
-    </div>
-  {{/each}}
-</div>
-{{/ui-dropdown}}
+    {{ log 'section is' section }}
 
-  <p>
-    Section Title
-    <input type="text" />
-  </p>
-  <p>
-    Research Kit Type
-    <select>
-      <option>Overview</option>
-      <option>Purpose of Study</option>
-    </select>
-  </p>
+    <h3>{{sectionDescription}}<button>+ Add</button></h3>
 
-  <p>
-    Learn more button title 
-    <input type="text" />
-  </p>
-
-  <p>
-    Summary<br>
-    <textarea rows="20" cols="40"></textarea>
-  </p>
-</div>
-<div class="column">
-  <div class="ui centered grid" style="border: 3px solid black; border-radius: 40px;width: 230px; height:405px">
-    <h1>Overview</h1>
-    <h2>Overview of the study</h2>
-
-    <h3>Learn more about the study</h3>
-
-    <button>Get Started</button>
+    {{#ui-dropdown 
+      class="selection" 
+      selected=currentSection
+      onChange=(action (mut currentSection)) as |execute mapper|}}
+        <div class="default text">Section</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each model.sections as |section|}}
+            <div class="item" data-value="{{map-value mapper section}}">
+              {{section.title}}
+            </div>
+          {{/each}}
+        </div>
+      {{/ui-dropdown}}
   </div>
-</div>
-<div class="column">
-  <h5>Consent Document {{model.version}}</h5>
-  <h6>Last Published {{model.lastPublished}}</h6>
-  <button>Save</button>
-  <button>Publish</button>
-</div>
+  <div class="row">
+
+
+    <div class="column">
+
+      <p>
+      Section Title
+      {{input type="text" value=currentSection.title}}
+      </p>
+      <p>
+      Research Kit Type
+      <select>
+        <option>Overview</option>
+        <option>Purpose of Study</option>
+      </select>
+      </p>
+
+      <p>
+      Learn more button title 
+      <input type="text" />
+      </p>
+
+      <p>
+      Summary<br>
+      <textarea rows="20" cols="40"></textarea>
+      </p>
+    </div>
+    <div class="column">
+      {{iphone-preview section=currentSection }}
+    </div>
+    <div class="column">
+      <h5>Consent Document {{model.version}}</h5>
+      <h6>Last Published {{model.lastPublished}}</h6>
+      <button>Save</button>
+      <button>Publish</button>
+    </div>
+  </div>
 </div>
 {{outlet}}

@@ -6,5 +6,10 @@ export default Ember.Route.extend({
       console.log(r);
       return r;
     });
+  },
+
+  setupController(controller, model) {
+    controller.set('model',model);
+    controller.set('currentSection', model.get('sections.firstObject'));
   }
 });
