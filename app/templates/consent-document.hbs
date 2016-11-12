@@ -3,22 +3,32 @@
 
     {{ log 'section is' section }}
 
-    <h3>{{sectionDescription}}<button>+ Add</button></h3>
+    {{currentSection.title}}
 
-    {{#ui-dropdown 
-      class="selection" 
-      selected=currentSection
-      onChange=(action (mut currentSection)) as |execute mapper|}}
-        <div class="default text">Section</div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          {{#each model.sections as |section|}}
-            <div class="item" data-value="{{map-value mapper section}}">
-              {{section.title}}
-            </div>
-          {{/each}}
-        </div>
-      {{/ui-dropdown}}
+    {{#if refresh}}
+    <h4 class="header">
+      <div class="content">
+        {{sectionDescription}}
+        {{#ui-dropdown 
+          class=[ "selection", "inline" ]
+          selected=currentSection
+          onChange=(action (mut currentSection)) as |execute mapper|}}
+          <div class="default text">Section</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            {{#each model.sections as |section|}}
+              <div class="item" data-value="{{map-value mapper section}}">
+                {{log "bind section options" section }}
+                {{section.title}}
+              </div>
+            {{/each}}
+          </div>
+        {{/ui-dropdown}}
+        <a href="#" {{action "addSection"}}>+ New Section</a>
+      </div>
+      </h4>
+      {{/if}}
+
   </div>
   <div class="row">
 
