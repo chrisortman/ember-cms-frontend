@@ -2,6 +2,7 @@ import { module } from 'qunit';
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
+import Mirage from 'ember-cli-mirage';
 
 const { RSVP: { Promise } } = Ember;
 
@@ -13,6 +14,7 @@ export default function(name, options = {}) {
       if (options.beforeEach) {
         return options.beforeEach.apply(this, arguments);
       }
+
     },
 
     afterEach() {

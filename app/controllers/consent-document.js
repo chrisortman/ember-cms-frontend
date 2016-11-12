@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
     },
 
     addSection() {
-      let store = this.get('store')
+      let store = this.get('store');
       let section = store.createRecord('consent-section', {
         title: 'New Section',
         document: this.get('model')
