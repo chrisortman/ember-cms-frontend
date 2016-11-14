@@ -9,16 +9,14 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{iphone-preview}}`);
-
-  assert.equal(this.$().text().trim(), '');
+  // this.render(hbs`{{iphone-preview}}`);
+  //
+  // assert.equal(this.$().text().trim(), '');
 
   // Template block usage:
   this.render(hbs`
-    {{#iphone-preview}}
-      template block text
-    {{/iphone-preview}}
+    {{#iphone-preview}} {{/iphone-preview}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'Overview of the study\n\n  Learn more about the study\n\n  Get Started');
 });

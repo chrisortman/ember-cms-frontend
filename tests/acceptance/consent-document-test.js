@@ -10,8 +10,6 @@ moduleForAcceptance('Acceptance | consent document', {
 });
 
 test('visiting /consent-document', function(assert) {
-  visit('/');
-  // server.loadFixtures();
   visit('/consent-document');
 
   andThen(function() {
