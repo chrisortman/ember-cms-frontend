@@ -12,7 +12,19 @@ moduleForAcceptance('Acceptance | consent document', {
 test('visiting /consent-document', function(assert) {
   visit('/consent-document');
 
+
+  click('#section_item_1');
   andThen(function() {
-    assert.equal(currentURL(), '/consent-document');
+    assert.equal( find('#section_description').text().trim(), "Section 2 of 2 -");
+  });
+});
+
+test('adding a new section', function(assert) {
+
+  visit('/consent-document');
+
+  click('#new_section');
+  andThen(function() {
+    assert.equal( find('#section_description').text().trim(), "Section 3 of 3 -");
   });
 });
