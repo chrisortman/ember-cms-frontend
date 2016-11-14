@@ -10,4 +10,5 @@ module.exports = {
     "PhantomJS",
     "Chrome"
   ]
+  // "phantomjs_debug_port": 9000
 };
