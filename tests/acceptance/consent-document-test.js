@@ -4,8 +4,6 @@ import moduleForAcceptance from 'cms/tests/helpers/module-for-acceptance';
 moduleForAcceptance('Acceptance | consent document', {
   beforeEach() {
     window.server.loadFixtures();
-    console.log("Before EaCH");
-      // startMirage();
   }
 });
 

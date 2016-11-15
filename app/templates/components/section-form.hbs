@@ -1,28 +1,30 @@
-<p>
-Section Title
-{{input class="ork-title" type="text" value=section.title}}
-</p>
+<form class="ui form">
+<div class="field">
+  <label>Section Title</label>
+  {{input class="ork-title" type="text" value=section.title}}
+</div>
 
-<p>
-Summary
+<div class="field">
+  <label>Summary</label>
 {{input class="ork-summary" type="text" value=section.summary}}
-</p>
+</div>
 
-<p>
-Research Kit Type
-<select class="ork-type" onchange={{action (mut section.researchKitType) value="target.value"}}>
+<div class="field">
+  <label>Research Kit Type</label>
+<select class="ork-type ui fluid dropdown" onchange={{action (mut section.researchKitType) value="target.value"}}>
   {{#each availableTypeChoices as |typeChoice|}}
     <option value={{typeChoice}} selected={{eq section.researchKitType typeChoice}}>{{typeChoice}}</option>
   {{/each}}
 </select>
-</p>
+</div>
 
-<p>
-Learn more button title 
+<div class="field">
+  <label>Learn more button title</label>
 {{input class="ork-learn-more" type="text" value=section.learnMoreButtonTitle}}
-</p>
+</div>
 
-<p>
-Full Description<br>
+<div class="field">
+  <label>Full Description</label>
 <textarea rows="20" cols="40"></textarea>
-</p>
+</div>
+</form>

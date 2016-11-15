@@ -11,6 +11,10 @@ export default Ember.Controller.extend({
     return `Section ${idx+1} of ${count} - `;
   }),
 
+  saveEnabled : Ember.computed('currentSection', function() {
+    return true;
+  }),
+
   actions: {
     mapper(section) {
       return section.id;
