@@ -1,0 +1,13 @@
+<h1> 
+  <small>{{link-to 'Back' 'surveys.index' }}</small>
+  {{ model.title }}
+</h1>
+<form class="ui form">
+  <div class="field">
+    <label>Title</label>
+    {{input class="survey-title" type="text" value=model.title}}
+  </div>
+
+  <button {{action "addQuestion"}}>Add Question</button>
+</form>
+{{outlet}}

@@ -8,7 +8,10 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('consent-document');
-  this.route('surveys');
+  this.route('surveys', function() {
+    this.route('show', { path: '/:survey_id' });
+    this.route('edit', { path: '/:survey_id' });
+  });
 });
 
 export default Router;

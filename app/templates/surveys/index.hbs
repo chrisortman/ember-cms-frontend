@@ -1,0 +1,10 @@
+<ul class="surveys">
+  {{#each model as |survey|}}
+    <li>
+      {{#link-to 'surveys.edit' survey}}
+        {{survey.title}}
+      {{/link-to}}
+    </li>
+  {{/each}}
+</ul>
+{{outlet}}

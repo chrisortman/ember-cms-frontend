@@ -14,4 +14,12 @@ test('visiting /surveys', function(assert) {
     assert.equal(currentURL(), '/surveys');
     assert.equal( find('ul.surveys li').length, 2);
   });
+
+  click('ul.surveys li a:contains("General Health")');
+
+  andThen(() => {
+    assert.equal( find('input.survey-title').val(), "General Health");
+  });
 });
+
+
