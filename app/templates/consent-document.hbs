@@ -32,28 +32,7 @@
 
 
     <div class="column">
-
-      <p>
-      Section Title
-      {{input type="text" value=currentSection.title}}
-      </p>
-      <p>
-      Research Kit Type
-      <select>
-        <option>Overview</option>
-        <option>Purpose of Study</option>
-      </select>
-      </p>
-
-      <p>
-      Learn more button title 
-      <input type="text" />
-      </p>
-
-      <p>
-      Summary<br>
-      <textarea rows="20" cols="40"></textarea>
-      </p>
+      {{section-form section=currentSection }}
     </div>
     <div class="column">
       {{iphone-preview section=currentSection }}

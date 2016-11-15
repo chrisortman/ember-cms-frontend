@@ -1,0 +1,28 @@
+<p>
+Section Title
+{{input class="ork-title" type="text" value=section.title}}
+</p>
+
+<p>
+Summary
+{{input class="ork-summary" type="text" value=section.summary}}
+</p>
+
+<p>
+Research Kit Type
+<select class="ork-type" onchange={{action (mut section.researchKitType) value="target.value"}}>
+  {{#each availableTypeChoices as |typeChoice|}}
+    <option value={{typeChoice}} selected={{eq section.researchKitType typeChoice}}>{{typeChoice}}</option>
+  {{/each}}
+</select>
+</p>
+
+<p>
+Learn more button title 
+{{input class="ork-learn-more" type="text" value=section.learnMoreButtonTitle}}
+</p>
+
+<p>
+Full Description<br>
+<textarea rows="20" cols="40"></textarea>
+</p>
