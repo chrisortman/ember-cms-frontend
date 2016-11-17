@@ -22,4 +22,3 @@ test('visiting /surveys', function(assert) {
   });
 });
 
-

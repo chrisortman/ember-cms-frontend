@@ -2,12 +2,22 @@
   <small>{{link-to 'Back' 'surveys.index' }}</small>
   {{ model.title }}
 </h1>
-<form class="ui form">
-  <div class="field">
-    <label>Title</label>
-    {{input class="survey-title" type="text" value=model.title}}
-  </div>
+<div class="ui two column grid container">
+  <div class="column">
+    <form class="ui form">
 
-  <button {{action "addQuestion"}}>Add Question</button>
-</form>
+      <div class="field">
+        <label>Title</label>
+        {{input class="survey-title" type="text" value=model.title}}
+      </div>
+      <h4 class="ui dividing header">Question_1</h4>
+      {{#question-editor}}{{/question-editor}}
+
+      <button {{action "addQuestion"}}>Add Question</button>
+    </form>
+  </div>
+  <div class="column">
+    <h3>Preview</h3>
+  </div>
 {{outlet}}
+</div>

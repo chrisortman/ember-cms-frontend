@@ -10,7 +10,7 @@ Router.map(function() {
   this.route('consent-document');
   this.route('surveys', function() {
     this.route('show', { path: '/:survey_id' });
-    this.route('edit', { path: '/:survey_id' });
+    this.route('edit', { path: '/:survey_id/edit' });
   });
 });
 
