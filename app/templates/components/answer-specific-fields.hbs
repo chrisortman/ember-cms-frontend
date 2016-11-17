@@ -1,0 +1,17 @@
+{{#if showChoiceInput }}
+  <ol class="question-picker-input">
+    <li><input>
+    </li>
+  </ol>
+
+{{/if}}
+
+{{#if showMultiline }}
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox" tabindex="0" class="hidden question-multiple-lines">
+      <label>Multiple Lines?</label>
+    </div>
+  </div>
+{{/if}}
+{{yield}}
