@@ -9,7 +9,6 @@ export default function(name, options = {}) {
   module(name, {
     beforeEach() {
       this.application = startApp();
-
       if (options.beforeEach) {
         return options.beforeEach.apply(this, arguments);
       }
