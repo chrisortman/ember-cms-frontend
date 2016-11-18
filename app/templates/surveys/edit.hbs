@@ -10,14 +10,23 @@
         <label>Title</label>
         {{input class="survey-title" type="text" value=model.title}}
       </div>
-      <h4 class="ui dividing header">Question_1</h4>
-      {{#question-editor}}{{/question-editor}}
 
-      <button {{action "addQuestion"}}>Add Question</button>
+      {{#each model.questions as |question index|}}
+        <h4 class="ui dividing header">
+        Question {{ index-to-position index }}
+        </h4>
+        <div class="field">
+          {{input class="question-identifier" type="text" value=question.identifier  placeholder="Question_111"}}
+        </div>
+
+        {{#question-editor}}{{/question-editor}}
+      {{/each}}
+
+      <button {{action (route-action "addQuestion" model)}}>Add Question</button>
     </form>
   </div>
   <div class="column">
     <h3>Preview</h3>
   </div>
-{{outlet}}
+  {{outlet}}
 </div>

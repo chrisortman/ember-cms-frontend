@@ -28,4 +28,7 @@ export default function() {
   this.get('/consent-documents/:id');
   this.get('/surveys');
   this.get('/surveys/:id');
+  this.get('/survey-questions/:id');
+  this.post('/surveys');
+  this.patch('/surveys/:id');
 }
