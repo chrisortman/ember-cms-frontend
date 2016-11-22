@@ -1,7 +1,8 @@
 <ol class="question-picker-input">
-  {{#each listItems as |item| }}
-    <li>{{input type="text" value=item.value}} <a href="#" {{action "removeItem" item}}>remove</a></li>
+  {{#each items as |item| }}
+    {{log "POOP" (get item "text") }}
+    <li>{{input type="text" value=item.text}} <a href="#" {{action "removeItem" item}}>remove</a></li>
   {{/each}}
 </ol>
-<button {{action "addNewItem"}}>Add some items</button>
+<button {{action (action addNewItem)}}>Add some items</button>
 {{yield}}

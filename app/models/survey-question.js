@@ -6,5 +6,6 @@ export default DS.Model.extend({
   answerType: DS.attr('string'),
   required: DS.attr('bool'),
   multiline: DS.attr('bool'),
-  survey: DS.belongsTo('survey')
+  survey: DS.belongsTo('survey'),
+  pickerValues: DS.hasMany('picker-value'),
 });

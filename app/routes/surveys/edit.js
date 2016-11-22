@@ -5,9 +5,7 @@ export default Ember.Route.extend({
     return this.store
       .findRecord(
         'survey',
-        params.survey_id, {
-          include: 'questions'
-        }
+        params.survey_id 
       );
   },
 
@@ -23,6 +21,18 @@ export default Ember.Route.extend({
         });
         questions.pushObject(question);
       });
-    }
+    },
+
+    addPickerItem(question) {
+      return question.get('pickerValues').then( (pv) => {
+        console.log("PV", pv);
+        let newChoice = this.store.createRecord('picker-value',{
+          question: question,
+          value: '11',
+          text: 'FOOO',
+        });
+        pv.pushObject(newChoice);
+      });
+    },
   }
 });

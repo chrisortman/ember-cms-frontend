@@ -1,5 +1,5 @@
       <div class="field">
-        {{input class="question-title" type="text" placeholder="How tall are you?"}}
+        {{input class="question-title" type="text" placeholder="How tall are you?" value=question.title}}
       </div>
 
       <div class="field">
@@ -7,14 +7,30 @@
           {{#each-in allAnswerTypes as |group items|}}
             <optgroup label="{{ group }}">
               {{#each items as |item|}}
-                <option>{{ item }}</option>
+                    <option selected={{eq item question.answerType}}>{{ item }}</option>
               {{/each}}
             </optgroup>
           {{/each-in}}
         </select>
       </div>
 
-      {{ answer-specific-fields answerType=answerType }}
+{{#if showChoiceInput }}
+      {{ log "SHOW CHOICE INPUT" (get question "pickerValues") }}
+      {{list-builder
+            items=(get question "pickerValues")
+            addNewItem=(action choiceAdd)
+      }}
+
+{{/if}}
+
+{{#if showMultiline }}
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox" tabindex="0" class="hidden question-multiple-lines">
+      <label>Multiple Lines?</label>
+    </div>
+  </div>
+{{/if}}
 
       <div class="field">
         <div class="ui checkbox">

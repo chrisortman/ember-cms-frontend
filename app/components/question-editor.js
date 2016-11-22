@@ -16,9 +16,12 @@ export default Ember.Component.extend({
     ]
   },
 
+  showChoiceInput: Ember.computed.equal('question.answerType','Picker'),
+  showMultiline: Ember.computed.equal('question.answerType', 'Text'),
+
   actions: {
     changeAnswerType(selectedType) {
-      this.set('answerType', selectedType);
+      this.set('question.answerType', selectedType);
     }
   }
 });

@@ -1,6 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('survey', 'Unit | Model | survey', {
+moduleForModel('picker-value', 'Unit | Model | picker value', {
   // Specify the other units that are required for this test.
   needs: ['model:survey-question']
 });

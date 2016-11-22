@@ -19,7 +19,11 @@
           {{input class="question-identifier" type="text" value=question.identifier  placeholder="Question_111"}}
         </div>
 
-        {{#question-editor}}{{/question-editor}}
+        {{log "PPPPV" (get question "pickerValues")}}
+        {{#question-editor 
+          question=question 
+          choiceAdd=(route-action "addPickerItem" question)}}
+        {{/question-editor}}
       {{/each}}
 
       <button {{action (route-action "addQuestion" model)}}>Add Question</button>
