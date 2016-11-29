@@ -1,8 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:consent-document', 'Unit | Controller | consent document', {
+moduleFor('controller:consent-document/edit', 'Unit | Controller | consent document/edit', {
   // Specify the other units that are required for this test.
-  needs: ['model:consent-section']
+  // needs: ['controller:foo']
 });
 
 // Replace this with your real tests.
@@ -10,4 +10,3 @@ test('it exists', function(assert) {
   let controller = this.subject();
   assert.ok(controller);
 });
-

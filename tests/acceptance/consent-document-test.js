@@ -7,11 +7,11 @@ moduleForAcceptance('Acceptance | consent document', {
   }
 });
 
-test('visiting /consent-document', function(assert) {
+test('visiting /consent-document/2/edit', function(assert) {
   visit('/');
   // return pauseTest();
 
-  visit('/consent-document');
+  visit('/consent-document/2/edit');
 
 
   click('#section_item_1');
@@ -22,7 +22,7 @@ test('visiting /consent-document', function(assert) {
 
 test('adding a new section', function(assert) {
 
-  visit('/consent-document');
+  visit('/consent-document/2/edit');
 
   click('#new_section');
   andThen(function() {
