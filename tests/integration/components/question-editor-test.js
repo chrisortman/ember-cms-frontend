@@ -62,8 +62,6 @@ test('it renders picker question', function(assert) {
   });
 
 
-  console.log("QUESTION", pickerQuestion.get('title'));
-  console.log("QUESTION", pickerQuestion.get('pickerValues'));
   this.set('externalAdd', () => { });
   this.set('question', pickerQuestion);
 

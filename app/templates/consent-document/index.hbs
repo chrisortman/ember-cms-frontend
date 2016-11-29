@@ -1,0 +1,10 @@
+<ul class="surveys">
+  {{#each model as |doc_version|}}
+    <li>
+      {{#link-to 'consent-document.edit' doc_version}}
+        Document Version - {{doc_version.version}}
+      {{/link-to}}
+    </li>
+  {{/each}}
+</ul>
+{{outlet}}

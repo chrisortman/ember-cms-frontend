@@ -1,0 +1,48 @@
+<div class="ui three column grid container">
+  <div class="row">
+
+    {{ log 'section is' section }}
+
+    {{#if refresh}}
+    <h4 id="section_menu" class="header">
+      <div class="content">
+        <span id="section_description">{{sectionDescription}}</span>
+        {{#ui-dropdown 
+          class=[ "selection", "inline" ]
+          selected=currentSection
+          onChange=(action (mut currentSection)) as |execute mapper|}}
+          <div class="default text">Section</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            {{#each model.sections as |section index|}}
+              <div id="section_item_{{index}}" class="item" data-value="{{map-value mapper section}}">
+                {{log "bind section options" section }}
+                {{section.title}}
+              </div>
+            {{/each}}
+          </div>
+        {{/ui-dropdown}}
+        <a id="new_section" href="#" {{action "addSection"}}>+ New Section</a>
+      </div>
+    </h4>
+    {{/if}}
+
+  </div>
+  <div class="row">
+
+
+    <div class="column">
+      {{section-form section=currentSection }}
+    </div>
+    <div class="column">
+      {{iphone-preview section=currentSection }}
+    </div>
+    <div class="column">
+      <h5>Consent Document {{model.version}}</h5>
+      <h6>Last Published {{model.lastPublished}}</h6>
+      <button>Save</button>
+      <button>Publish</button>
+    </div>
+  </div>
+</div>
+{{outlet}}
