@@ -1,6 +1,7 @@
 <h1> 
   <small>{{link-to 'Back' 'surveys.index' }}</small>
   {{ model.title }}
+  <button {{action (route-action "saveSurvey")}}>Save</button>
 </h1>
 <div class="ui two column grid container">
   <div class="column">

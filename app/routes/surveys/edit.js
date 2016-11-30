@@ -11,6 +11,12 @@ export default Ember.Route.extend({
 
   actions: {
 
+    saveSurvey() {
+      this.modelFor('surveys.edit').save().then(() => {
+        this.transitionTo('surveys');
+      });
+    },
+
     addQuestion(survey) {
       return survey.get('questions').then( (questions) => {
 
