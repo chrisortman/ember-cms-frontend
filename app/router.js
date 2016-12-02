@@ -14,6 +14,7 @@ Router.map(function() {
     this.route('show', { path: '/:survey_id' });
     this.route('edit', { path: '/:survey_id/edit' });
   });
+  this.route('welcome-information');
 });
 
 export default Router;
