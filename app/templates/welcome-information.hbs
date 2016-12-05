@@ -5,7 +5,7 @@
     <p>
     <div class="ui form">
       <div class="field">
-{{textarea value=aboutThisStudyText rows="6"}}
+{{textarea value=model.aboutText rows="6"}}
       </div>
     </div>
     </p>
@@ -15,6 +15,6 @@
   </li>
 </ol>
 
-<button class="ui button">Save</button>
+<button class="ui button" {{action (route-action "saveAll")}}>Save</button>
 {{outlet}}
 </div>
