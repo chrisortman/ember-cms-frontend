@@ -32,7 +32,7 @@ test('it exists', function(assert) {
 test('reports when not published', function(assert) {
   let service = this.subject();
 
-  return service.hasPublished('app-information').then( (result) => {
+  return service.hasPublished('app-information', db).then( (result) => {
     assert.equal(result, false);
   });
 
@@ -51,7 +51,7 @@ test('reports when already published', function(assert) {
 
   const done = assert.async();
 
-  service.hasPublished('app-information').then( (result) => {
+  service.hasPublished('app-information', db).then( (result) => {
       assert.equal(result, true);
       done();
   });
