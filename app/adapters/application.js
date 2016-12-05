@@ -1,11 +1,12 @@
 // import DS from 'ember-data';
 import PouchDB from 'pouchdb';
 import { Adapter } from 'ember-pouch';
+import ENV from 'cms/config/environment';
 
 PouchDB.debug.enable('*');
 
 var remote = new PouchDB('http://localhost:5984/cms_backend');
-var db = new PouchDB('local_pouch');
+var db = new PouchDB( ENV.LOCAL_DATABASE_NAME );
 
 db.sync(remote, {
   live: true,

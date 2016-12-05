@@ -29,6 +29,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+     ENV.APP.LOCAL_DATABASE_NAME = "local_pouch"
      ENV['ember-cli-mirage'] = {
       enabled: false
      };
@@ -44,9 +45,11 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
 
-     ENV['ember-cli-mirage'] = {
+    ENV.APP.LOCAL_DATABASE_NAME = "db_test";
+
+    ENV['ember-cli-mirage'] = {
       enabled: true
-     };
+    };
   }
 
   if (environment === 'production') {
