@@ -8,7 +8,7 @@ var db;
 
 moduleFor('service:publisher', 'Unit | Service | publisher', {
   // Specify the other units that are required for this test.
-  // needs: ['pouch-database'],
+  needs: ['pouch:local'],
   beforeEach() {
     db = new PouchDB( ENV.APP.LOCAL_DATABASE_NAME );
     console.log("DB OPENED");

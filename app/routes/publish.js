@@ -1,10 +1,8 @@
 import Ember from 'ember';
-import PouchDB from 'pouchdb';
-
-// var remote = new PouchDB('http://localhost:5984/cms_backend');
-var db = new PouchDB('local_pouch');
 
 export default Ember.Route.extend({
+  publisher: Ember.service.inject(),
+
   model() {
     db.get("published-app-information").then( (doc) => {
       //document exists already
