@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  publisher: Ember.service.inject(),
+  publisher: Ember.inject.service(),
 
   model() {
     db.get("published-app-information").then( (doc) => {

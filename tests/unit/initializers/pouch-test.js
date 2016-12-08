@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { initialize } from 'cms/instance-initializers/pouch';
+import { initialize } from 'cms/initializers/pouch';
 import { module, test } from 'qunit';
 import destroyApp from '../../helpers/destroy-app';
 
