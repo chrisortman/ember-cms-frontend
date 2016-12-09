@@ -8,10 +8,9 @@ moduleForAcceptance('Acceptance | consent document', {
   beforeEach() {
     const documents = this.application.__container__.lookup('service:document-store');
     const db = documents.get('db');
-    return RSVP.Promise.all(
+    return RSVP.Promise.all([
     db.put({
       _id: 'consent_document_2_1',
-      _rev: '1',
       data: {
         title: 'Consent Document',
         sections: [
@@ -23,7 +22,6 @@ moduleForAcceptance('Acceptance | consent document', {
 
     db.put({
       _id: 'consent_section_2_section-1',
-      _rev: '1',
       data: {
         title: 'Section 1'
       }
@@ -31,12 +29,11 @@ moduleForAcceptance('Acceptance | consent document', {
 
     db.put({
       _id: 'consent_section_2_section-2',
-      _rev: '1',
       data: {
         title: 'Section 2'
       }
     })
-    );
+    ]);
   }
 });
 
