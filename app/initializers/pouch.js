@@ -1,12 +1,26 @@
 import ENV from 'cms/config/environment';
 import PouchDB from 'pouchdb';
 
-export function initialize( application ) {
-  var db = PouchDB( ENV.APP.LOCAL_DATABASE_NAME );
+// PouchDB.debug.enable('*');
 
-  application.register('pouch:local', db, { instantiate: false });
-  application.inject('service:document-store','db','pouch:local');
-  application.inject('adapter:application', 'db', 'pouch:local');
+var db, remote;
+
+export function initialize( application ) {
+
+  if ( ENV.environment === 'test' ) {
+    db = PouchDB( ENV.APP.LOCAL_DATABASE_NAME, {adapter: 'memory' });
+  } else {
+    db = PouchDB( ENV.APP.LOCAL_DATABASE_NAME );
+    remote = new PouchDB('http://localhost:5984/cms_backend');
+
+    db.sync(remote, {
+      live: true,
+      retry: true
+    });
+  }
+  application.register('service:local-pouch', db, { instantiate: false });
+  application.inject('service:document-store','db','service:local-pouch');
+  application.inject('adapter:application', 'db', 'service:local-pouch');
   // appInstance.inject('route', 'foo', 'service:foo');
 }
 

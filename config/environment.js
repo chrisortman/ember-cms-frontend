@@ -48,7 +48,7 @@ module.exports = function(environment) {
     ENV.APP.LOCAL_DATABASE_NAME = "db_test";
 
     ENV['ember-cli-mirage'] = {
-      enabled: true
+      enabled: false
     };
   }
 

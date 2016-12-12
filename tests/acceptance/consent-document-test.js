@@ -1,47 +1,61 @@
 import {  test } from 'qunit';  
-import Ember from 'ember';
 import moduleForAcceptance from 'cms/tests/helpers/module-for-acceptance';
-import RSVP from 'rsvp';
+
+const DOC_ID = "2";
+const SEC_ONE_ID = "A";
+const SEC_TWO_ID = "B";
 
 moduleForAcceptance('Acceptance | consent document', {
   needs: ['service:document-store'],
   beforeEach() {
     const documents = this.application.__container__.lookup('service:document-store');
     const db = documents.get('db');
-    return RSVP.Promise.all([
-    db.put({
-      _id: 'consent_document_2_1',
-      data: {
-        title: 'Consent Document',
-        sections: [
-          'section-1',
-          'section-2'
-        ]
-      }
-    }),
+    console.log("test database", db);
 
-    db.put({
-      _id: 'consent_section_2_section-1',
-      data: {
-        title: 'Section 1'
-      }
-    }),
+    return db.bulkDocs([
+      {
+        _id: `consentDocument_2_${DOC_ID}`,
+        data: {
+          title: 'Consent Document',
+          sections: [
+            SEC_ONE_ID,
+            SEC_TWO_ID
+          ]
+        }
+      },
 
-    db.put({
-      _id: 'consent_section_2_section-2',
-      data: {
-        title: 'Section 2'
+      {
+        _id: `consentSection_2_${SEC_ONE_ID}`,
+        data: {
+          title: 'Section 1',
+          document: DOC_ID
+        }
+      },
+
+      {
+        _id: `consentSection_2_${SEC_TWO_ID}`,
+        data: {
+          title: 'Section 2',
+          document: DOC_ID,
+        }
       }
-    })
+
     ]);
+
+  },
+
+  afterEach() {
+    const documents = this.application.__container__.lookup('service:document-store');
+    const db = documents.get('db');
+    return db.destroy();
   }
 });
 
-test('visiting /consent-document/2/edit', function(assert) {
+test(`visiting /consent-document/${DOC_ID}/edit`, function(assert) {
   visit('/');
   // return pauseTest();
 
-  visit('/consent-document/2/edit');
+  visit(`/consent-document/${DOC_ID}/edit`);
 
 
   click('#section_item_1');
@@ -52,7 +66,7 @@ test('visiting /consent-document/2/edit', function(assert) {
 
 test('adding a new section', function(assert) {
 
-  visit('/consent-document/2/edit');
+  visit(`/consent-document/${DOC_ID}/edit`);
 
   click('#new_section');
   andThen(function() {

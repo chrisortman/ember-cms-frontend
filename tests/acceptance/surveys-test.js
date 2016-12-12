@@ -3,7 +3,7 @@ import moduleForAcceptance from 'cms/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | surveys', {
   beforeEach() {
-    window.server.loadFixtures();
+    // window.server.loadFixtures();
   }
 });
 

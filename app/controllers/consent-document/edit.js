@@ -20,18 +20,5 @@ export default Ember.Controller.extend({
       return section.id;
     },
 
-    addSection() {
-      let store = this.get('store');
-      let section = store.createRecord('consent-section', {
-        title: 'New Section',
-        document: this.get('model')
-      });
-      this.set('currentSection', section);
-      const _this = this;
-      this.set('refresh', false);
-      Ember.run.next(function () {
-          _this.set('refresh', true);
-      });
-    }
   }
 });

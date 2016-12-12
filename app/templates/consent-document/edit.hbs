@@ -22,7 +22,7 @@
             {{/each}}
           </div>
         {{/ui-dropdown}}
-        <a id="new_section" href="#" {{action "addSection"}}>+ New Section</a>
+        <a id="new_section" href="#" {{action (route-action "addSection")}}>+ New Section</a>
       </div>
     </h4>
     {{/if}}
@@ -40,7 +40,7 @@
     <div class="column">
       <h5>Consent Document {{model.version}}</h5>
       <h6>Last Published {{model.lastPublished}}</h6>
-      <button>Save</button>
+      <button {{action (route-action "saveWholeDocument")}}>Save</button>
       <button>Publish</button>
     </div>
   </div>
