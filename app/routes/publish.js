@@ -2,9 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   publisher: Ember.inject.service(),
+  db: Ember.inject.service('local-pouch'),
 
   model() {
-    db.get("published-app-information").then( (doc) => {
+    this.db.get("published-app-information").then( () => {
       //document exists already
     }).catch( (err) => {
       if ( err.status === 404 ) {

@@ -8,7 +8,6 @@ export default function startApp(attrs) {
   // use defaults, but you can override
   let attributes = Ember.assign({}, config.APP, attrs);
 
-  let db = new PouchDB('poop',{adapter: 'memory'});
   Ember.run(() => {
     application = Application.create(attributes);
     application.setupForTesting();

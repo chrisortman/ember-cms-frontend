@@ -2,7 +2,7 @@ import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('service:document-store', 'Unit | Service | document store', {
   // Specify the other units that are required for this test.
-  needs: ['pouch:local']
+  needs: []
 });
 
 // Replace this with your real tests.

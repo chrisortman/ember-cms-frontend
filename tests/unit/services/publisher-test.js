@@ -1,25 +1,19 @@
 import { moduleFor, test } from 'ember-qunit';
 import PouchDB from 'pouchdb';
 import Ember from 'ember';
-import wait from 'ember-test-helpers/wait';
 import ENV from 'cms/config/environment';
 
 var db;
 
 moduleFor('service:publisher', 'Unit | Service | publisher', {
   // Specify the other units that are required for this test.
-  needs: ['pouch:local'],
+  needs: [],
   beforeEach() {
-    db = new PouchDB( ENV.APP.LOCAL_DATABASE_NAME );
-    console.log("DB OPENED");
+    db = new PouchDB( ENV.APP.LOCAL_DATABASE_NAME, {adapter: 'memory'} );
   },
 
-  afterEach(assert) {
-    const done = assert.async();
-    db.destroy().then(function() {
-      console.log("DESTROY DONE");
-      done();
-    });
+  afterEach() {
+    return db.destroy();
   }
 });
 

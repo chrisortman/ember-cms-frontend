@@ -1,20 +1,6 @@
 // import DS from 'ember-data';
-import PouchDB from 'pouchdb';
 import { Adapter } from 'ember-pouch';
-import ENV from 'cms/config/environment';
-import Ember from 'ember';
 
-const { getOwner } = Ember;
-
-// PouchDB.debug.enable('*');
-
-// var remote = new PouchDB('http://localhost:5984/cms_backend');
-// var db = new PouchDB( ENV.LOCAL_DATABASE_NAME );
-
-// db.sync(remote, {
-//   live: true,
-//   retry: true
-// });
 //
 // export default DS.JSONAPIAdapter.extend({
 //   namespace: 'api',

@@ -1,18 +1,17 @@
 import Ember from 'ember';
-import RSVP from 'rsvp'
+import RSVP from 'rsvp';
 
 export default Ember.Service.extend({
+  db: Ember.inject.service('local-pouch'),
+
   hasPublished(docKey, db) {
 
-    console.log("THIS", this);
-
     const docId = `published-${ docKey}`;
-
 
     return new RSVP.Promise(function(resolve,reject) {
 
       console.log("GET DOC ID", docId);
-      db.get('published-app-information').then( (doc) => {
+      db.get('published-app-information').then( () => {
         // Ember.run( () => { 
           resolve(true); 
         // } );

@@ -8,9 +8,9 @@ var db, remote;
 export function initialize( application ) {
 
   if ( ENV.environment === 'test' ) {
-    db = PouchDB( ENV.APP.LOCAL_DATABASE_NAME, {adapter: 'memory' });
+    db = new PouchDB( ENV.APP.LOCAL_DATABASE_NAME, {adapter: 'memory' });
   } else {
-    db = PouchDB( ENV.APP.LOCAL_DATABASE_NAME );
+    db = new PouchDB( ENV.APP.LOCAL_DATABASE_NAME );
     remote = new PouchDB('http://localhost:5984/cms_backend');
 
     db.sync(remote, {

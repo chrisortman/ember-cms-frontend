@@ -3,7 +3,23 @@ import moduleForAcceptance from 'cms/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | surveys', {
   beforeEach() {
-    // window.server.loadFixtures();
+    this.testDB.bulkDocs([
+      {
+        _id: "survey_2_A",
+        data: {
+          title: 'General Health',
+        },
+      },
+
+      {
+        _id: "survey_2_B",
+        data: {
+          title: 'Quality of Life',
+        },
+      },
+
+
+    ]);
   }
 });
 
