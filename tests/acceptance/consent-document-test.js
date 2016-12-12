@@ -8,11 +8,8 @@ const SEC_TWO_ID = "B";
 moduleForAcceptance('Acceptance | consent document', {
   needs: ['service:document-store'],
   beforeEach() {
-    const documents = this.application.__container__.lookup('service:document-store');
-    const db = documents.get('db');
-    console.log("test database", db);
 
-    return db.bulkDocs([
+    return this.testDB.bulkDocs([
       {
         _id: `consentDocument_2_${DOC_ID}`,
         data: {
@@ -43,12 +40,6 @@ moduleForAcceptance('Acceptance | consent document', {
     ]);
 
   },
-
-  afterEach() {
-    const documents = this.application.__container__.lookup('service:document-store');
-    const db = documents.get('db');
-    return db.destroy();
-  }
 });
 
 test(`visiting /consent-document/${DOC_ID}/edit`, function(assert) {

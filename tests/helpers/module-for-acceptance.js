@@ -9,6 +9,10 @@ export default function(name, options = {}) {
   module(name, {
     beforeEach() {
       this.application = startApp();
+      const documents = this.application.__container__.lookup('service:document-store');
+      const db = documents.get('db');
+      this.testDB = db;
+
       if (options.beforeEach) {
         return options.beforeEach.apply(this, arguments);
       }
@@ -21,7 +25,10 @@ export default function(name, options = {}) {
       }
 
       let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
-      return Promise.resolve(afterEach).then(() => destroyApp(this.application));
+
+      return Promise.resolve(afterEach)
+        .then(() => this.testDB.destroy())
+        .then(() => destroyApp(this.application));
     }
   });
 }
